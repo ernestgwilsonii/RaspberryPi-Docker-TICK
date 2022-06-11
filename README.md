@@ -35,8 +35,8 @@ mkdir -p /opt/docker-compose
 cd /opt/docker-compose
 mkdir -p /opt/docker-compose/W3GUY
 cd /opt/docker-compose/W3GUY
-git clone git@github.com:ernestgwilsonii/RaspberryPi-Docker-tick.git
-cd RaspberryPi-Docker-tick
+git clone git@github.com:ernestgwilsonii/RaspberryPi-Docker-TICK.git
+cd RaspberryPi-Docker-TICK
 sudo ./lazy.sh
 docker stack deploy -c docker-compose.yml tick-stack
 docker stack ls
