@@ -1,10 +1,9 @@
-# RaspberryPi-Docker-tick
+# RaspberryPi-Docker-TICK
 Raspberry Pi Docker TICK Stack
 
 ```
 #########################################################################
 # TICK Stack - Telegraf, InfluxDB, Chronograf, and Kapacitor            #
-#              (in Docker Containers) for Raspberry Pi                  #
 #    REF: https://www.influxdata.com/time-series-platform/              #
 #    REF: https://www.influxdata.com/time-series-platform/telegraf/     #
 #    REF: https://www.influxdata.com/products/influxdb/                 #
