@@ -1,10 +1,9 @@
-# RaspberryPi-Docker-tick
+# RaspberryPi-Docker-TICK
 Raspberry Pi Docker TICK Stack
 
 ```
 #########################################################################
 # TICK Stack - Telegraf, InfluxDB, Chronograf, and Kapacitor            #
-#              (in Docker Containers) for Raspberry Pi                  #
 #    REF: https://www.influxdata.com/time-series-platform/              #
 #    REF: https://www.influxdata.com/time-series-platform/telegraf/     #
 #    REF: https://www.influxdata.com/products/influxdb/                 #
@@ -35,8 +34,8 @@ mkdir -p /opt/docker-compose
 cd /opt/docker-compose
 mkdir -p /opt/docker-compose/W3GUY
 cd /opt/docker-compose/W3GUY
-git clone git@github.com:ernestgwilsonii/RaspberryPi-Docker-tick.git
-cd RaspberryPi-Docker-tick
+git clone git@github.com:ernestgwilsonii/RaspberryPi-Docker-TICK.git
+cd RaspberryPi-Docker-TICK
 sudo ./lazy.sh
 docker stack deploy -c docker-compose.yml tick-stack
 docker stack ls
