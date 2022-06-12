@@ -8,8 +8,7 @@ chmod -R a+rw /opt/docker/telegraf
 # InfluxDB - https://hub.docker.com/r/arm64v8/influxdb
 mkdir -p /opt/docker/influxdb/etc/influxdb
 cp -n influxdb.conf /opt/docker/influxdb/etc/influxdb/influxdb.conf
-mkdir -p /opt/docker/influxdb/var/lib/influxdb/meta
-mkdir -p /opt/docker/influxdb/var/lib/influxdb/data
+mkdir -p /opt/docker/influxdb/var/lib/influxdb
 chmod -R a+rw /opt/docker/influxdb
 
 # Chronograf - https://hub.docker.com/r/arm64v8/chronograf

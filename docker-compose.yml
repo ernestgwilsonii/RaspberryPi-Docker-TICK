@@ -85,7 +85,7 @@ services:
         target: /etc/influxdb
       - type: bind
         source: /opt/docker/influxdb/var/lib/influxdb
-        target: /var/lib/influxdb
+        target: /var/lib/influxdb2
     deploy:
       labels:
         local.description: "InfluxDB"

@@ -1,0 +1,11 @@
+# Solar Data
+from(bucket: "db_map")
+  |> range(start: -1m)
+  |> filter(fn: (r) => r["_measurement"] == "telegraf_solar_data")
+  |> filter(fn: (r) => r["_field"] == "a" or r["_field"] == "aurora" or r["_field"] == "expk" or r["_field"] == "id" or r["_field"] == "k" or r["_field"] == "r" or r["_field"] == "sfi" or r["_field"] == "station")
+
+# POTA SPOTS Data
+from(bucket: "db_map")
+  |> range(start: -1m)
+  |> filter(fn: (r) => r["_measurement"] == "telegraf_pota_data")
+  |> filter(fn: (r) => r["_field"] == "name" or r["_field"] == "activator" or r["_field"] == "comments" or r["_field"] == "expire" or r["_field"] == "count" or r["_field"] == "frequency" or r["_field"] == "grid4" or r["_field"] == "grid6" or r["_field"] == "latitude" or r["_field"] == "locationDesc" or r["_field"] == "longitude" or r["_field"] == "mode" or r["_field"] == "reference" or r["_field"] == "source" or r["_field"] == "spotId" or r["_field"] == "spotTime" or r["_field"] == "spotter")
