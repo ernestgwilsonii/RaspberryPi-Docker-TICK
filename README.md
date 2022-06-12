@@ -57,10 +57,11 @@ time docker pull arm64v8/chronograf:1.9.4       # REF: https://hub.docker.com/r/
 time docker pull arm64v8/kapacitor:1.6.4        # REF: https://hub.docker.com/r/arm64v8/kapacitor
 docker images
 
-# Generate new config files (optional)
-#docker run --rm -p 8092:8092/udp -p 8094:8094/tcp -p 8125:8125/tcp arm64v8/telegraf:1.22.4 telegraf config > telegraf.conf
-#docker run --rm -v /opt/docker/influxdb/etc/influxdb:/etc/influxdb -v /opt/docker/influxdb/var/lib/influxdb:/var/lib/influxdb -p 2003:2003/tcp -p 8094:8094/tcp -p 8125:8125/tcp arm64v8/influxdb:2.2.0-alpine influxd config > influxdb.conf
-#docker run --rm -v /opt/docker/kapacitor/var/lib/kapacitor:/var/lib/kapacitor -p 9092:9092 arm32v7/kapacitor:1.9.4 kapacitord config > kapacitor.conf
+
+# Generate new generic config file examples (optional)
+#docker run --rm arm64v8/telegraf:1.22.4 telegraf config > telegraf.conf.generic
+#docker run --rm arm64v8/kapacitor:1.6.4 kapacitord config > kapacitor.conf.generic
+
 
 # Verify (no persistence, start each container manually for testing and then shutdown and remove)
 docker network create influxdb
