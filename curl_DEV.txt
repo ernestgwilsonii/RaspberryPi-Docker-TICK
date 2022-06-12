@@ -1,0 +1,9 @@
+REF: https://www.iota-world.org/iotamaps/
+
+# Part  1 - get spot times and island identifiers
+curl 'https://www.iota-world.org/iotamaps/index_tools.php?what=getclusterdata&rows=50&bnds=all&md=all&startup=true&uuid=0&dummy=1645876945237&_=1645876943394' \
+  -H 'x-requested-with: XMLHttpRequest'
+
+# Part 2 - get island locations using indentifiers
+curl 'https://www.iota-world.org/iotamaps/index_tools.php?what=getlatestactgrps&grefs=AF-004%7CAF-016%7CAF-049%7CAS-013%7CEU-004%7CEU-014%7CEU-015%7CEU-114%7CNA-018%7CNA-021%7CNA-104%7CNA-107%7CNA-108%7CNA-249&dummy=1645876949690&_=1645876943395' \
+  -H 'x-requested-with: XMLHttpRequest'
