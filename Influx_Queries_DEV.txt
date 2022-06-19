@@ -27,3 +27,10 @@ from(bucket: "db_map")
   |> range(start: -1m)
   |> filter(fn: (r) => r["_measurement"] == "telegraf_iota_data")
   |> filter(fn: (r) => r["_field"] == "comment" or r["_field"] == "countryCode" or r["_field"] == "cqZone" or r["_field"] == "dxCall" or r["_field"] == "dxSpotter" or r["_field"] == "dxccCode" or r["_field"] == "dxccName" or r["_field"] == "frequency" or r["_field"] == "groupName" or r["_field"] == "grpRef" or r["_field"] == "isPirateStn" or r["_field"] == "ituZone" or r["_field"] == "operators" or r["_field"] == "periodFrom" or r["_field"] == "periodTo" or r["_field"] == "spotDate" or r["_field"] == "spotTStamp" or r["_field"] == "spotTime" or r["_field"] == "usrWantsGrp")
+
+# Pivot example
+from(bucket: "db_map")
+  |> range(start: -1m)
+  |> filter(fn: (r) => r["_measurement"] == "telegraf_pota_data")
+  |> filter(fn: (r) => r["_field"] == "name" or r["_field"] == "activator" or r["_field"] == "comments" or r["_field"] == "expire" or r["_field"] == "count" or r["_field"] == "frequency" or r["_field"] == "grid4" or r["_field"] == "grid6" or r["_field"] == "latitude" or r["_field"] == "locationDesc" or r["_field"] == "longitude" or r["_field"] == "mode" or r["_field"] == "reference" or r["_field"] == "source" or r["_field"] == "spotId" or r["_field"] == "spotTime" or r["_field"] == "spotter")
+  |> pivot(rowKey:["_time"], columnKey: ["_field"], valueColumn: "_value")
