@@ -51,24 +51,24 @@ docker ps
 ###############################################################################
 # Docker Images
 sudo bash
-time docker pull arm64v8/telegraf:1.22.4        # REF: https://hub.docker.com/r/arm64v8/telegraf
-time docker pull arm64v8/influxdb:2.2.0-alpine  # REF: https://hub.docker.com/r/arm64v8/influxdb
-time docker pull arm64v8/chronograf:1.9.4       # REF: https://hub.docker.com/r/arm64v8/chronograf
-time docker pull arm64v8/kapacitor:1.6.4        # REF: https://hub.docker.com/r/arm64v8/kapacitor
+time docker pull arm64v8/telegraf:1.24.4        # REF: https://hub.docker.com/r/arm64v8/telegraf
+time docker pull arm64v8/influxdb:2.5.1-alpine  # REF: https://hub.docker.com/r/arm64v8/influxdb
+time docker pull arm64v8/chronograf:1.10.0       # REF: https://hub.docker.com/r/arm64v8/chronograf
+time docker pull arm64v8/kapacitor:1.6.5        # REF: https://hub.docker.com/r/arm64v8/kapacitor
 docker images
 
 
 # Generate new generic config file examples (optional)
-#docker run --rm arm64v8/telegraf:1.22.4 telegraf config > telegraf.conf.generic
-#docker run --rm arm64v8/kapacitor:1.6.4 kapacitord config > kapacitor.conf.generic
+#docker run --rm arm64v8/telegraf:1.24.4 telegraf config > telegraf.conf.generic
+#docker run --rm arm64v8/kapacitor:1.6.5 kapacitord config > kapacitor.conf.generic
 
 
 # Verify (no persistence, start each container manually for testing and then shutdown and remove)
 docker network create influxdb
-docker run -d --name influxdb --net=influxdb -p 8086:8086/tcp -p 2003:2003/tcp -e INFLUXDB_GRAPHITE_ENABLED=true arm64v8/influxdb:2.2.0-alpine influxd
-docker run -d --name telegraf --net=influxdb -e HOST_ETC=/host/etc -e HOST_PROC=/host/proc -e HOST_SYS=/host/sys -p 8092:8092/udp -p 8094:8094/tcp -p 8125:8125/tcp -v /etc:/host/etc:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock -e HOST_PROC=/host/proc -e INFLUX_URL="http://$(hostname -I | awk '{print $1}'):8086" arm64v8/telegraf:1.22.4 telegraf
-docker run -d --name chronograf --net=influxdb -p 8888:8888 -e influxdb-url=http://influxdb:8086 arm64v8/chronograf:1.9.4 chronograf
-docker run -d --name kapacitor --net=influxdb -p 9092:9092 -e KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086 arm64v8/kapacitor:1.6.4       kapacitord
+docker run -d --name influxdb --net=influxdb -p 8086:8086/tcp -p 2003:2003/tcp -e INFLUXDB_GRAPHITE_ENABLED=true arm64v8/influxdb:2.5.1-alpine influxd
+docker run -d --name telegraf --net=influxdb -e HOST_ETC=/host/etc -e HOST_PROC=/host/proc -e HOST_SYS=/host/sys -p 8092:8092/udp -p 8094:8094/tcp -p 8125:8125/tcp -v /etc:/host/etc:ro -v /proc:/host/proc:ro -v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock -e HOST_PROC=/host/proc -e INFLUX_URL="http://$(hostname -I | awk '{print $1}'):8086" arm64v8/telegraf:1.24.4 telegraf
+docker run -d --name chronograf --net=influxdb -p 8888:8888 -e influxdb-url=http://influxdb:8086 arm64v8/chronograf:1.10.0 chronograf
+docker run -d --name kapacitor --net=influxdb -p 9092:9092 -e KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086 arm64v8/kapacitor:1.6.5       kapacitord
 docker ps
 # REF: https://docs.influxdata.com/influxdb/v1.8/tools/api/
 # Test stuff!
